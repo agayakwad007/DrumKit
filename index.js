@@ -1,56 +1,55 @@
-for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
+for (i = 0; i < 7; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
-    var buttonInnerHTML = this.innerHTML;
-    buttonAnimation(buttonInnerHTML);
-    makeSound(buttonInnerHTML);
+    makesound(this.innerHTML);
+    buttonanimation(this.innerHTML);
   });
 }
 
-document.addEventListener("keydown", function (event) {
-  buttonAnimation(buttonInnerHTML);
-  makeSound(event.key);
+// function handleclick(event) {}
+document.addEventListener("keydown", (event) => {
+  keyy = event.key;
+  makesound(keyy);
+  buttonanimation(keyy);
 });
 
-function makeSound(key) {
+function makesound(key) {
   switch (key) {
     case "w":
-      var tom1 = new Audio("sounds/tom-1.mp3");
-      tom1.play();
+      var audio = new Audio("sounds/crash.mp3");
+      audio.play();
       break;
     case "a":
-      var tom2 = new Audio("sounds/tom-2.mp3");
-      tom2.play();
+      var audio = new Audio("sounds/kick-bass.mp3");
+      audio.play();
       break;
     case "s":
-      var tom3 = new Audio("sounds/tom-3.mp3");
-      tom3.play();
+      var audio = new Audio("sounds/snare.mp3");
+      audio.play();
       break;
     case "d":
-      var tom4 = new Audio("sounds/tom-4.mp3");
-      tom4.play();
+      var audio = new Audio("sounds/tom-1.mp3");
+      audio.play();
       break;
     case "j":
-      var snare = new Audio("sounds/snare.mp3");
-      snare.play();
+      var audio = new Audio("sounds/tom-2.mp3");
+      audio.play();
       break;
     case "k":
-      var crash = new Audio("sounds/crash.mp3");
-      crash.play();
+      var audio = new Audio("sounds/tom-3.mp3");
+      audio.play();
       break;
     case "l":
-      var tom7 = new Audio("sounds/tom-2.mp3");
-      tom7.play();
+      var audio = new Audio("sounds/tom-4.mp3");
+      audio.play();
       break;
-
     default:
-      console.log(buttonInnerHTML);
+      console.log(this.innerHTML);
   }
 }
 
-function buttonAnimation(currentkey) {
-  var buttonani = document.querySelector("." + currentkey);
-  buttonani.classList.add("pressed");
+function buttonanimation(key) {
+  document.querySelector("." + key).classList.add("pressed");
   setTimeout(function () {
-    buttonani.classList.remove("pressed");
+    document.querySelector("." + key).classList.remove("pressed");
   }, 100);
 }
